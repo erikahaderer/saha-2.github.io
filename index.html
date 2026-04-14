@@ -72,9 +72,8 @@
 
     <script>
         const LAUNCH_DATE = new Date("2026-04-11T00:00:00");
-        const TODAY = new Date(); // DYNAMIC: This gets the real current date
+        const TODAY = new Date(); 
         
-        // Calculate days remaining until launch
         const diffInMs = LAUNCH_DATE - TODAY;
         const daysToLaunch = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
@@ -86,32 +85,49 @@
         };
 
         const pilots = [
-            { id: 1, name: "Juliana", cycleLength: "Not sure", symptoms: ["Acne", "Bloating", "Weight gain", "Irregular periods"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 2, name: "Paola Mayorga", cycleLength: "25-28", symptoms: ["Acne", "Mood changes", "Fatigue"], launchPhase: "Luteal", specificDayOnLaunch: null },
-            { id: 3, name: "Farah Sinokrot", cycleLength: "28-32", symptoms: ["Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue", "Irregular periods"], launchPhase: "Luteal", specificDayOnLaunch: null },
-            { id: 4, name: "Tomiwa Nihinlola", cycleLength: "28-32", symptoms: ["Acne", "Bloating", "Weight gain", "Fatigue", "Mood changes"], launchPhase: "Luteal", specificDayOnLaunch: 22 },
-            { id: 5, name: "Natalia Alipranti", cycleLength: "Not sure", symptoms: ["Bloating", "Weight gain", "Cramps", "Irregular periods", "Mood changes"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 6, name: "Paloma Martinez", cycleLength: "28-32", symptoms: ["Acne", "Cramps"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 7, name: "Hana", cycleLength: "Not sure", symptoms: ["Acne", "Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue"], launchPhase: "Luteal", specificDayOnLaunch: null },
-            { id: 8, name: "Isabel Nasser", cycleLength: "25-28", symptoms: ["Acne", "Bloating", "Cramps", "Mood changes", "Fatigue"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 9, name: "Asmae", cycleLength: "28-32", symptoms: ["Acne", "Cramps", "Irregular periods", "Mood changes", "Fatigue"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 10, name: "Fleur de Beaumont", cycleLength: "28-32", symptoms: ["Bloating", "Cramps", "Fatigue"], launchPhase: "Menstrual", specificDayOnLaunch: 2 },
-            { id: 11, name: "Pascale Reymond", cycleLength: "25-28", symptoms: ["Bloating", "Cramps", "Mood changes", "Fatigue", "Weight gain"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 12, name: "Antonia Bascuñán", cycleLength: "25-28", symptoms: ["Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue"], launchPhase: "Follicular", specificDayOnLaunch: null },
-            { id: 13, name: "Renata", cycleLength: "28-32", symptoms: ["Bloating", "Cramps", "Mood changes", "Fatigue"], launchPhase: "Menstrual", specificDayOnLaunch: 1 }
+            { id: 1, name: "Juliana", cycleLength: "Not sure", symptoms: ["Acne", "Bloating", "Weight gain", "Irregular periods"], lastPeriod: "2026-02-18", launchPhase: "Follicular" },
+            { id: 2, name: "Paola Mayorga", cycleLength: "25-28", symptoms: ["Acne", "Mood changes", "Fatigue"], lastPeriod: "2026-03-17", launchPhase: "Luteal" },
+            { id: 3, name: "Farah Sinokrot", cycleLength: "28-32", symptoms: ["Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue", "Irregular periods"], lastPeriod: "2026-03-31", launchPhase: "Luteal" },
+            { id: 4, name: "Tomiwa Nihinlola", cycleLength: "28-32", symptoms: ["Acne", "Bloating", "Weight gain", "Fatigue", "Mood changes"], lastPeriod: "2026-03-21", launchPhase: "Luteal" },
+            { id: 5, name: "Natalia Alipranti", cycleLength: "Not sure", symptoms: ["Bloating", "Weight gain", "Cramps", "Irregular periods", "Mood changes"], lastPeriod: "2026-04-04", launchPhase: "Follicular" },
+            { id: 6, name: "Paloma Martinez", cycleLength: "28-32", symptoms: ["Acne", "Cramps"], lastPeriod: "2026-03-15", launchPhase: "Follicular" },
+            { id: 7, name: "Hana", cycleLength: "Not sure", symptoms: ["Acne", "Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue"], lastPeriod: "2026-04-04", launchPhase: "Luteal" },
+            { id: 8, name: "Isabel Nasser", cycleLength: "25-28", symptoms: ["Acne", "Bloating", "Cramps", "Mood changes", "Fatigue"], lastPeriod: "2026-03-15", launchPhase: "Follicular" },
+            { id: 9, name: "Asmae", cycleLength: "28-32", symptoms: ["Acne", "Cramps", "Irregular periods", "Mood changes", "Fatigue"], lastPeriod: "2026-03-06", launchPhase: "Follicular" },
+            { id: 10, name: "Fleur de Beaumont", cycleLength: "28-32", symptoms: ["Bloating", "Cramps", "Fatigue"], lastPeriod: "2026-04-05", launchPhase: "Menstrual" },
+            { id: 11, name: "Pascale Reymond", cycleLength: "25-28", symptoms: ["Bloating", "Cramps", "Mood changes", "Fatigue", "Weight gain"], lastPeriod: "2026-04-03", launchPhase: "Follicular" },
+            { id: 12, name: "Antonia Bascuñán", cycleLength: "25-28", symptoms: ["Bloating", "Weight gain", "Cramps", "Mood changes", "Fatigue"], lastPeriod: "2026-03-17", launchPhase: "Follicular" },
+            { id: 13, name: "Renata", cycleLength: "28-32", symptoms: ["Bloating", "Cramps", "Mood changes", "Fatigue"], lastPeriod: "2026-03-14", launchPhase: "Menstrual" },
+            { id: 14, name: "Monica Martinez", cycleLength: "28-32", symptoms: ["Cramps", "Fatigue", "Mood changes"], lastPeriod: "2026-03-28", launchPhase: "Luteal" }
         ];
 
         let currentFilter = 'All';
         let currentSearch = '';
 
         function calculatePilotState(user) {
-            let avg = user.cycleLength.includes('-') ? (user.cycleLength.split('-').map(Number).reduce((a,b)=>a+b)/2) : 28;
-            let dayOnLaunch = user.specificDayOnLaunch || (user.launchPhase === "Menstrual" ? 1 : user.launchPhase === "Follicular" ? 8 : user.launchPhase === "Luteal" ? 21 : 15);
+            let avg = 28;
+            if (user.cycleLength.includes('-')) {
+                const parts = user.cycleLength.split('-').map(Number);
+                avg = (parts[0] + parts[1]) / 2;
+            }
+
+            const start = new Date(user.lastPeriod + "T00:00:00");
             
-            // Current Day = Day on Launch minus days remaining until launch
-            let currentDay = dayOnLaunch - daysToLaunch;
-            while (currentDay <= 0) currentDay += Math.round(avg);
-            while (currentDay > Math.round(avg)) currentDay -= Math.round(avg);
+            // Calculate Day Today
+            const msSinceLast = TODAY - start;
+            let currentDay = Math.floor(msSinceLast / (1000 * 60 * 60 * 24)) + 1;
+            
+            // Calculate Day on April 11
+            const msLaunch = LAUNCH_DATE - start;
+            let dayOnLaunch = Math.floor(msLaunch / (1000 * 60 * 60 * 24)) + 1;
+
+            // Wrap logic for cycle repetition
+            const cycleDays = Math.round(avg);
+            while (currentDay > cycleDays) currentDay -= cycleDays;
+            while (currentDay <= 0) currentDay += cycleDays;
+            
+            while (dayOnLaunch > cycleDays) dayOnLaunch -= cycleDays;
+            while (dayOnLaunch <= 0) dayOnLaunch += cycleDays;
 
             let currentPhase = PHASES.LUTEAL;
             if (currentDay <= 5) currentPhase = PHASES.MENSTRUAL;
@@ -122,10 +138,17 @@
         }
 
         function render() {
-            // Update Header info
             document.getElementById('current-date-display').innerText = TODAY.toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
             const countdownEl = document.getElementById('countdown-display');
-            countdownEl.innerText = daysToLaunch > 0 ? `T-${daysToLaunch} Day${daysToLaunch > 1 ? 's' : ''} to April 11` : (daysToLaunch === 0 ? "LAUNCH DAY!" : `Post-Launch Day ${Math.abs(daysToLaunch)}`);
+            
+            if (daysToLaunch > 0) {
+                countdownEl.innerText = `T-${daysToLaunch} Day${daysToLaunch > 1 ? 's' : ''} to April 11`;
+            } else if (daysToLaunch === 0) {
+                countdownEl.innerText = "LAUNCH DAY!";
+                countdownEl.classList.add('text-rose-600');
+            } else {
+                countdownEl.innerText = `Post-Launch Day ${Math.abs(daysToLaunch)}`;
+            }
 
             const stateData = pilots.map(calculatePilotState);
             const filtered = stateData.filter(u => u.name.toLowerCase().includes(currentSearch.toLowerCase()) && (currentFilter === 'All' || u.state.currentPhase.name === currentFilter));
@@ -152,7 +175,7 @@
 
             // List
             document.getElementById('pilot-list').innerHTML = filtered.map(u => `
-                <div class="bg-white border border-slate-100 rounded-[2.5rem] p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="bg-white border border-slate-100 rounded-[2.5rem] p-6 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-lg transition-all">
                     <div class="flex items-center gap-5 min-w-[250px]">
                         <div class="w-14 h-14 rounded-2xl ${u.state.currentPhase.color} bg-opacity-10 flex items-center justify-center shrink-0">
                             <span class="${u.state.currentPhase.text}">${u.state.currentPhase.icon}</span>
@@ -168,6 +191,7 @@
                     <div class="bg-slate-50 px-6 py-3 rounded-2xl text-center min-w-[150px]">
                         <p class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Launch Target</p>
                         <p class="text-xs font-black text-slate-700 uppercase">${u.state.launchPhase}</p>
+                        <p class="text-[9px] font-bold text-slate-400 italic">Expected Day ${u.state.dayOnLaunch}</p>
                     </div>
                 </div>
             `).join('');
@@ -177,12 +201,14 @@
         const filterContainer = document.getElementById('phase-filters');
         ['All', ...Object.values(PHASES).map(p => p.name)].forEach(p => {
             const btn = document.createElement('button');
-            btn.className = `px-3 py-2 rounded-xl text-[10px] font-black uppercase transition-all ${currentFilter === p ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-400'}`;
+            btn.className = `px-3 py-2 rounded-xl text-[10px] font-black uppercase transition-all ${currentFilter === p ? 'bg-slate-900 text-white shadow-md' : 'bg-slate-100 text-slate-400'}`;
             btn.innerText = p;
             btn.onclick = () => {
                 currentFilter = p;
-                document.querySelectorAll('#phase-filters button').forEach(b => { b.className = 'px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-slate-100 text-slate-400'; });
-                btn.className = 'px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-slate-900 text-white';
+                document.querySelectorAll('#phase-filters button').forEach(b => { 
+                    b.className = 'px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-slate-100 text-slate-400'; 
+                });
+                btn.className = 'px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-slate-900 text-white shadow-md';
                 render();
             };
             filterContainer.appendChild(btn);
